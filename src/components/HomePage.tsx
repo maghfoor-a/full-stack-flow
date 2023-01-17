@@ -1,11 +1,12 @@
 import useFetchResources from "../utils/fetchResources";
+import { ResourcesList } from "./ResoucesList";
 
 export default function HomePage(): JSX.Element {
   const resources = useFetchResources();
   return (
     <>
       {resources.length ? (
-        <h1>This is HomePage component.</h1>
+        <ResourcesList resources={resources} />
       ) : (
         <h1>Loading Data</h1>
       )}
