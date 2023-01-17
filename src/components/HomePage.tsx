@@ -1,7 +1,14 @@
+import useFetchResources from "../utils/fetchResources";
+
 export default function HomePage(): JSX.Element {
+  const resources = useFetchResources();
   return (
     <>
-      <h1>This is HomePage component.</h1>
+      {resources.length ? (
+        <h1>This is HomePage component.</h1>
+      ) : (
+        <h1>Loading Data</h1>
+      )}
     </>
   );
 }
