@@ -7,8 +7,9 @@ export interface IResource {
   resource_description: string;
   resource_tags: string;
   resource_content_type: string;
-  resource_user_recomendation: string;
-  resource_recomendation_reason: string;
+  resource_user_recommendation: string;
+  resource_recommendation_reason: string;
   resource_likes: number;
+  resource_dislikes: number;
   resource_link: string;
 }
