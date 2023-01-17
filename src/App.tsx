@@ -1,6 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import MainContent from "./components/MainContent";
 import Navbar from "./components/Navbar";
+import "./App.css";
 
 function App(): JSX.Element {
   return (

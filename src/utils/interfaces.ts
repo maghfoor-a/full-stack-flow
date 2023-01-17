@@ -13,3 +13,7 @@ export interface IResource {
   resource_dislikes: number;
   resource_link: string;
 }
+
+export interface ResourcesListProps {
+  resources: IResource[];
+}
