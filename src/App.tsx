@@ -1,7 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import MainContent from "./components/MainContent";
 import Navbar from "./components/Navbar";
-import { greet } from "./utils/greet";
 
 function App(): JSX.Element {
   return (
@@ -11,7 +10,7 @@ function App(): JSX.Element {
         <MainContent />
       </BrowserRouter>
     </>
-  )
+  );
 }
 
 export default App;
