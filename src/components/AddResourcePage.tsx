@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ResourceFormChangeEvent } from "../utils/interfaces";
 
+
+//add userID to the resource Form
 export default function AddResourcePage(): JSX.Element {
   const [resourceForm, setResourceForm] = useState({
     resource_name: "",
@@ -9,6 +11,8 @@ export default function AddResourcePage(): JSX.Element {
     resource_link: "",
     resource_recommendation_reason: "",
     resource_tags: "",
+    resource_likes: 0,
+    resource_dislikes: 0
   });
 
   console.log(resourceForm);
