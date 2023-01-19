@@ -1,4 +1,4 @@
-import { IResource, ResourcesListProps } from "../utils/interfaces";
+import { ResourcesListProps } from "../utils/interfaces";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 

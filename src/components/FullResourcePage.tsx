@@ -3,11 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { BaseURL } from "../utils/baseURL";
 import useFetchResources from "../utils/fetchResources";
-import {
-  FullResourcesPageProps,
-  IComments,
-  IResource,
-} from "../utils/interfaces";
+import { IComments } from "../utils/interfaces";
 
 export default function FullResourcePage(): JSX.Element {
   const [commentList, setCommentList] = useState<IComments[]>();
@@ -31,7 +27,7 @@ export default function FullResourcePage(): JSX.Element {
       console.error("you have an error with spots");
     }
     console.log("finished with getcommentsFromServer");
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     getCommentsFromServer();

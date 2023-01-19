@@ -1,16 +1,12 @@
-import { useState } from "react";
 import { Route, Routes } from "react-router";
-import { Link } from "react-router-dom";
 import { IResource } from "../utils/interfaces";
 import AddResourcePage from "./AddResourcePage";
 import FullResourcePage from "./FullResourcePage";
 import HomePage from "./HomePage";
 
 export default function MainContent(): JSX.Element {
-  const [selectedResource, setSelectedResource] = useState<IResource>();
   const handleResourceClick = (selectedResource: IResource) => {
     console.log("Resource Clicked", selectedResource);
-    setSelectedResource(selectedResource);
   };
 
   return (

@@ -1,5 +1,5 @@
 import useFetchResources from "../utils/fetchResources";
-import { HomePageProps, IResource } from "../utils/interfaces";
+import { HomePageProps } from "../utils/interfaces";
 import { ResourcesList } from "./ResoucesList";
 
 export default function HomePage(props: HomePageProps): JSX.Element {
