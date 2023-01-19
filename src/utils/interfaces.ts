@@ -35,3 +35,7 @@ export interface IComments {
   comment_Likes: number;
   comment_time: number;
 }
+
+export type ResourceFormChangeEvent = React.ChangeEvent<
+  HTMLInputElement | HTMLSelectElement
+>;

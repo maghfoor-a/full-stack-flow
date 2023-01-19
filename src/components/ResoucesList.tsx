@@ -25,6 +25,7 @@ export function ResourcesList({
             <p className="authorName">{resource.author_name}</p>
             <p className="description">{resource.resource_description}</p>
             <p>{resource.resource_tags}</p>
+
             <Link
               className="resourceButton"
               to={`/fullresource/${resource.resource_id}`}
