@@ -16,4 +16,13 @@ export interface IResource {
 
 export interface ResourcesListProps {
   resources: IResource[];
+  handleResourceClick: (resource: IResource) => void;
+}
+
+export interface HomePageProps {
+  handleResourceClick: (resource: IResource) => void;
+}
+
+export interface FullResourcesPageProps {
+  selectedResource: IResource | undefined;
 }

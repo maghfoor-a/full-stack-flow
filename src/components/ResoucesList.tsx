@@ -1,7 +1,10 @@
-import { ResourcesListProps } from "../utils/interfaces";
+import { IResource, ResourcesListProps } from "../utils/interfaces";
 import { format } from "date-fns";
 
-export function ResourcesList({ resources }: ResourcesListProps): JSX.Element {
+export function ResourcesList({
+  resources,
+  handleResourceClick,
+}: ResourcesListProps): JSX.Element {
   return (
     <>
       {resources.map((resource) => {
@@ -21,6 +24,7 @@ export function ResourcesList({ resources }: ResourcesListProps): JSX.Element {
             <p className="authorName">{resource.author_name}</p>
             <p className="description">{resource.resource_description}</p>
             <p>{resource.resource_tags}</p>
+            <button onClick={() => handleResourceClick(resource)}></button>
           </div>
         );
       })}
