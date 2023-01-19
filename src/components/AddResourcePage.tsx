@@ -6,6 +6,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 //add userID to the resource Form
+
+//--------------------------------------------------------------------------------------JSX function declaration
 export default function AddResourcePage(): JSX.Element {
   const [resourceForm, setResourceForm] = useState({
     resource_name: "",
@@ -21,8 +23,8 @@ export default function AddResourcePage(): JSX.Element {
     resource_link: "",
   });
 
-  console.log(resourceForm);
-
+  
+//--------------------------------------------------------------------------------------TAGS handler function
   const handleResourceTags = (selectedValue: string) => {
     const tagsArray = resourceForm.resource_tags.split(", ");
     if (tagsArray.includes(selectedValue)) {
@@ -66,7 +68,7 @@ export default function AddResourcePage(): JSX.Element {
     }
   };
 
-  //handling the submit button click
+  //--------------------------------------------------------------------------------------handling the submit button click
   const handleSubmitButton = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     postResourceForm();
@@ -84,6 +86,7 @@ export default function AddResourcePage(): JSX.Element {
       resource_link: "",
     });
   };
+  //--------------------------------------------------------------------------------------HTML returned
   return (
     <>
       <h1>This is AddResourcePage.</h1>

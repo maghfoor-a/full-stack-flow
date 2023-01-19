@@ -5,9 +5,13 @@ import { BaseURL } from "../utils/baseURL";
 import useFetchResources from "../utils/fetchResources";
 import { IComments } from "../utils/interfaces";
 
+//--------------------------------------------------------------------------------------JSX Element declaration
 export default function FullResourcePage(): JSX.Element {
+//--------------------------------------------------------------------------------------USESTATE declarations
   const [commentList, setCommentList] = useState<IComments[]>();
   const resourceList = useFetchResources();
+
+//--------------------------------------------------------------------------------------Defining selected resource
   const { id } = useParams();
   const resource = resourceList.find((resource) => {
     if (id) {
@@ -15,6 +19,8 @@ export default function FullResourcePage(): JSX.Element {
     }
     return false;
   });
+
+//--------------------------------------------------------------------------------------GET comments from SERVER
   const getCommentsFromServer = useCallback(async () => {
     console.log("fetching comment list from api");
 
@@ -32,6 +38,8 @@ export default function FullResourcePage(): JSX.Element {
   useEffect(() => {
     getCommentsFromServer();
   }, [getCommentsFromServer]);
+
+//--------------------------------------------------------------------------------------return HTML
   return (
     <>
       {resource && (
