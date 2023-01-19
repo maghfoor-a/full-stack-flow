@@ -21,6 +21,7 @@ export function ResourcesList({ resources }: ResourcesListProps): JSX.Element {
             <p className="authorName">{resource.author_name}</p>
             <p className="description">{resource.resource_description}</p>
             <p>{resource.resource_tags}</p>
+            <p>{resource.resource_link}</p>
           </div>
         );
       })}
