@@ -1,0 +1,22 @@
+body {
+  font-family: monospace;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  background-color: rgb(96, 158, 150);
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.navitem {
+  text-decoration: none;
+  color: black;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: rgb(68, 88, 106);
+  width: 120px;
+}

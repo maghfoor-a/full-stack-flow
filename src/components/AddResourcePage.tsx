@@ -23,8 +23,7 @@ export default function AddResourcePage(): JSX.Element {
     resource_link: "",
   });
 
-  
-//--------------------------------------------------------------------------------------TAGS handler function
+  //--------------------------------------------------------------------------------------TAGS handler function
   const handleResourceTags = (selectedValue: string) => {
     const tagsArray = resourceForm.resource_tags.split(", ");
     if (tagsArray.includes(selectedValue)) {

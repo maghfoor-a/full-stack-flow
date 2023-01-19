@@ -4,14 +4,15 @@ import { useParams } from "react-router";
 import { BaseURL } from "../utils/baseURL";
 import useFetchResources from "../utils/fetchResources";
 import { IComments } from "../utils/interfaces";
+import "./FullResourcePage.css";
 
 //--------------------------------------------------------------------------------------JSX Element declaration
 export default function FullResourcePage(): JSX.Element {
-//--------------------------------------------------------------------------------------USESTATE declarations
+  //--------------------------------------------------------------------------------------USESTATE declarations
   const [commentList, setCommentList] = useState<IComments[]>();
   const resourceList = useFetchResources();
 
-//--------------------------------------------------------------------------------------Defining selected resource
+  //--------------------------------------------------------------------------------------Defining selected resource
   const { id } = useParams();
   const resource = resourceList.find((resource) => {
     if (id) {
@@ -20,7 +21,7 @@ export default function FullResourcePage(): JSX.Element {
     return false;
   });
 
-//--------------------------------------------------------------------------------------GET comments from SERVER
+  //--------------------------------------------------------------------------------------GET comments from SERVER
   const getCommentsFromServer = useCallback(async () => {
     console.log("fetching comment list from api");
 
@@ -39,13 +40,13 @@ export default function FullResourcePage(): JSX.Element {
     getCommentsFromServer();
   }, [getCommentsFromServer]);
 
-//--------------------------------------------------------------------------------------return HTML
+  //--------------------------------------------------------------------------------------return HTML
   return (
     <>
       {resource && (
         <div>
-          <div className="resourcesInformation">
-            <h1>
+          <div className="resources-information">
+            <h1 className="resource-title">
               {resource.resource_name}: {resource.author_name}
             </h1>
             <p>{resource.resource_description}</p>
@@ -53,17 +54,20 @@ export default function FullResourcePage(): JSX.Element {
             <p>{resource.resource_likes}👍</p>
             <p>{resource.resource_dislikes}👎</p>
           </div>
-          <div className="commentContainer">
-            {commentList?.map((comment) => {
-              return (
-                <div className="comment-item" key={comment.comment_id}>
-                  <p>
-                    {comment.user_id}: {comment.comment_text} - Likes:
-                    {comment.comment_Likes}
-                  </p>
-                </div>
-              );
-            })}
+          <div className="comment-section">
+            <h1 className="comments-title">comments:</h1>
+            <div className="comment-container">
+              {commentList?.map((comment) => {
+                return (
+                  <div className="comment-item" key={comment.comment_id}>
+                    <p>
+                      {comment.user_id}: {comment.comment_text} - Likes:
+                      {comment.comment_Likes}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       )}

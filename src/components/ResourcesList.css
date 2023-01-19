@@ -1,0 +1,32 @@
+body {
+  font-family: monospace;
+}
+
+.resource-item {
+  border: 1px solid black;
+  background-color: rgb(84, 134, 75);
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30vw;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.resource-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.title {
+  background-color: rgb(91, 120, 145);
+  padding: 10px;
+  border-radius: 15px;
+}
+.resource-info {
+  background-color: rgb(121, 151, 176);
+  padding: 20px;
+  border-radius: 15px;
+}
