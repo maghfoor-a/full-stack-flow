@@ -3,8 +3,7 @@ import { useState } from "react";
 import { BaseURL } from "../utils/baseURL";
 import { ResourceFormChangeEvent } from "../utils/interfaces";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-
+import "react-toastify/dist/ReactToastify.css";
 
 //add userID to the resource Form
 export default function AddResourcePage(): JSX.Element {
@@ -19,7 +18,7 @@ export default function AddResourcePage(): JSX.Element {
     resource_recommendation_reason: "",
     resource_likes: 0,
     resource_dislikes: 0,
-    resource_link: ""
+    resource_link: "",
   });
 
   console.log(resourceForm);
@@ -48,12 +47,11 @@ export default function AddResourcePage(): JSX.Element {
     try {
       await axios.post(BaseURL + "resources", resourceForm);
       notify();
+    } catch (error) {
+      window.alert("Failed to post your resoure data:(");
+      console.error(error);
     }
-    catch (error) {
-      window.alert("Failed to post your resoure data:(")
-      console.error(error)
-    }
-  }
+  };
 
   //handling the submit button click
   const handleSubmitButton = (e: React.FormEvent<HTMLFormElement>) => {
@@ -70,9 +68,9 @@ export default function AddResourcePage(): JSX.Element {
       resource_recommendation_reason: "",
       resource_likes: 0,
       resource_dislikes: 0,
-      resource_link: ""
+      resource_link: "",
     });
-  }
+  };
   return (
     <>
       <h1>This is AddResourcePage.</h1>
@@ -122,7 +120,10 @@ export default function AddResourcePage(): JSX.Element {
             ></input>
           </label>
         </label>
-        <select name="resource_user_recommendation" onChange={(e) => handleChangeFormValue(e)}>
+        <select
+          name="resource_user_recommendation"
+          onChange={(e) => handleChangeFormValue(e)}
+        >
           <option value={""}>Choose recommendation type</option>
           <option value={"I recommend this resource after having used it!"}>
             I recommend this resource after having used it!
