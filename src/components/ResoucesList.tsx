@@ -1,5 +1,6 @@
 import { IResource, ResourcesListProps } from "../utils/interfaces";
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
 export function ResourcesList({
   resources,
@@ -24,7 +25,13 @@ export function ResourcesList({
             <p className="authorName">{resource.author_name}</p>
             <p className="description">{resource.resource_description}</p>
             <p>{resource.resource_tags}</p>
-            <button onClick={() => handleResourceClick(resource)}></button>
+            <Link
+              className="resourceButton"
+              to={`/fullresource/${resource.resource_id}`}
+              onClick={() => handleResourceClick(resource)}
+            >
+              See Full Resource
+            </Link>
           </div>
         );
       })}
