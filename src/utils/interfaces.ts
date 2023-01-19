@@ -16,6 +16,24 @@ export interface IResource {
 
 export interface ResourcesListProps {
   resources: IResource[];
+  handleResourceClick: (resource: IResource) => void;
+}
+
+export interface HomePageProps {
+  handleResourceClick: (resource: IResource) => void;
+}
+
+export interface FullResourcesPageProps {
+  selectedResource: IResource | undefined;
+}
+
+export interface IComments {
+  comment_id: number;
+  user_id: number;
+  resource_id: number;
+  comment_text: string;
+  comment_Likes: number;
+  comment_time: number;
 }
 
 export type ResourceFormChangeEvent = React.ChangeEvent<
