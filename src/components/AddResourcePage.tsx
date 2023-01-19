@@ -178,7 +178,6 @@ export default function AddResourcePage(): JSX.Element {
         <button type="submit">Submit</button>
       </form>
       <ToastContainer />
-      <button onClick={notify}>Test</button>
     </>
   );
 }
