@@ -1,22 +1,30 @@
+import axios from "axios";
 import { useState } from "react";
+import { BaseURL } from "../utils/baseURL";
 import { ResourceFormChangeEvent } from "../utils/interfaces";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 //add userID to the resource Form
 export default function AddResourcePage(): JSX.Element {
   const [resourceForm, setResourceForm] = useState({
     resource_name: "",
-    resource_description: "",
     author_name: "",
-    resource_link: "",
-    resource_recommendation_reason: "",
+    user_id: 1,
+    resource_description: "",
     resource_tags: "",
+    resource_content_type: "",
+    resource_user_recommendation: "",
+    resource_recommendation_reason: "",
     resource_likes: 0,
-    resource_dislikes: 0
+    resource_dislikes: 0,
+    resource_link: ""
   });
 
   console.log(resourceForm);
 
+  //handling updating the resource form values
   const handleChangeFormValue = (e: ResourceFormChangeEvent) => {
     setResourceForm(() => {
       if (e.target.name !== "resource_tags") {
@@ -31,16 +39,50 @@ export default function AddResourcePage(): JSX.Element {
       };
     });
   };
+
+  //notify that post has been sucessful
+  const notify = () => toast("Successfully posted your resource!");
+
+  //making a post request to the backend to add the resource form
+  const postResourceForm = async () => {
+    try {
+      await axios.post(BaseURL + "resources", resourceForm);
+      notify();
+    }
+    catch (error) {
+      window.alert("Failed to post your resoure data:(")
+      console.error(error)
+    }
+  }
+
+  //handling the submit button click
+  const handleSubmitButton = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    postResourceForm();
+    setResourceForm({
+      resource_name: "",
+      author_name: "",
+      user_id: 1,
+      resource_description: "",
+      resource_tags: "",
+      resource_content_type: "",
+      resource_user_recommendation: "",
+      resource_recommendation_reason: "",
+      resource_likes: 0,
+      resource_dislikes: 0,
+      resource_link: ""
+    });
+  }
   return (
     <>
       <h1>This is AddResourcePage.</h1>
-      <form>
+      <form onSubmit={handleSubmitButton}>
         <label>
           Resource Name:
           <input
             type="text"
             onChange={(e) => handleChangeFormValue(e)}
-            name="resoruce_name"
+            name="resource_name"
             value={resourceForm.resource_name}
           ></input>
         </label>
@@ -70,8 +112,17 @@ export default function AddResourcePage(): JSX.Element {
             name="resource_link"
             value={resourceForm.resource_link}
           ></input>
+          <label>
+            Content Type:
+            <input
+              type="text"
+              onChange={(e) => handleChangeFormValue(e)}
+              name="resource_content_type"
+              value={resourceForm.resource_content_type}
+            ></input>
+          </label>
         </label>
-        <select>
+        <select name="resource_user_recommendation" onChange={(e) => handleChangeFormValue(e)}>
           <option value={""}>Choose recommendation type</option>
           <option value={"I recommend this resource after having used it!"}>
             I recommend this resource after having used it!
@@ -124,7 +175,10 @@ export default function AddResourcePage(): JSX.Element {
             onChange={(e) => handleChangeFormValue(e)}
           ></input>
         </div>
+        <button type="submit">Submit</button>
       </form>
+      <ToastContainer />
+      <button onClick={notify}>Test</button>
     </>
   );
 }

@@ -18,4 +18,4 @@ export interface ResourcesListProps {
   resources: IResource[];
 }
 
-export type ResourceFormChangeEvent = React.ChangeEvent<HTMLInputElement>;
+export type ResourceFormChangeEvent = React.ChangeEvent<HTMLInputElement|HTMLSelectElement>;
