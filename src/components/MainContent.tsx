@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router";
+import { Link } from "react-router-dom";
 import { IResource } from "../utils/interfaces";
 import AddResourcePage from "./AddResourcePage";
 import FullResourcePage from "./FullResourcePage";
@@ -20,10 +21,7 @@ export default function MainContent(): JSX.Element {
           element={<HomePage handleResourceClick={handleResourceClick} />}
         />
         <Route path="/addresource" element={<AddResourcePage />} />
-        <Route
-          path="/fullresource/:id"
-          element={<FullResourcePage selectedResource={selectedResource} />}
-        />
+        <Route path="/fullresource/:id" element={<FullResourcePage />} />
       </Routes>
     </>
   );
