@@ -23,6 +23,23 @@ export default function AddResourcePage(): JSX.Element {
 
   console.log(resourceForm);
 
+  const handleResourceTags = (selectedValue: string) => {
+    const tagsArray = resourceForm.resource_tags.split(", ");
+    if (tagsArray.includes(selectedValue)) {
+      const filteredTags = tagsArray.filter(tag => tag !== selectedValue);
+      const arrayToString = filteredTags.join(", ")
+      return arrayToString
+    }
+    if (resourceForm.resource_tags.length === 0) {
+      return selectedValue
+    }
+    if (resourceForm.resource_tags.includes(selectedValue)) {
+      return "";
+    }
+    return resourceForm.resource_tags + ", " + selectedValue
+
+  }
+
   //handling updating the resource form values
   const handleChangeFormValue = (e: ResourceFormChangeEvent) => {
     setResourceForm(() => {
@@ -31,10 +48,7 @@ export default function AddResourcePage(): JSX.Element {
       }
       return {
         ...resourceForm,
-        [e.target.name]:
-          resourceForm.resource_tags.length === 0
-            ? e.target.value
-            : resourceForm.resource_tags + ", " + e.target.value,
+        [e.target.name]: handleResourceTags(e.target.value)
       };
     });
   };
