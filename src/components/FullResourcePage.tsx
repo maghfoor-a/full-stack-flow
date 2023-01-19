@@ -1,7 +1,17 @@
-export default function FullResourcePage(): JSX.Element {
+import useFetchResources from "../utils/fetchResources";
+import { FullResourcesPageProps, IResource } from "../utils/interfaces";
+
+export default function FullResourcePage({
+  selectedResource,
+}: FullResourcesPageProps): JSX.Element {
+  const resource = useFetchResources();
   return (
     <>
-      <h1>This is a full resource page app.</h1>
+      {selectedResource && (
+        <div>
+          <h3>{selectedResource.author_name}</h3>
+        </div>
+      )}
     </>
   );
 }
