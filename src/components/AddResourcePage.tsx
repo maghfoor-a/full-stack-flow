@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { BaseURL } from "../utils/baseURL";
+import { BackendURL } from "../utils/backendURL";
 import { ResourceFormChangeEvent } from "../utils/interfaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
