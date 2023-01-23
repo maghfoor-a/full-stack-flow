@@ -9,10 +9,9 @@ export function ResourcesList({
   resources,
   handleResourceClick,
 }: ResourcesListProps): JSX.Element {
-
   const handleLikeResource = async (id: number) => {
-    await axios.patch(BackendURL + `resources/likes/${id}`)
-  }
+    await axios.patch(BackendURL + `resources/likes/${id}`);
+  };
   return (
     <>
       <div className="resource-container">
@@ -22,7 +21,11 @@ export function ResourcesList({
               <div className="resourceSummary">
                 <h3 className="title">{resource.resource_name}</h3>
                 <div className="resource-info">
-                  <button onClick={() => handleLikeResource(resource.resource_id)}>{resource.resource_likes}👍</button>
+                  <button
+                    onClick={() => handleLikeResource(resource.resource_id)}
+                  >
+                    {resource.resource_likes}👍
+                  </button>
                   <button>{resource.resource_dislikes}👎</button>
                   <p>
                     {format(
