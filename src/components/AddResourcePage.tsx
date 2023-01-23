@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { BaseURL } from "../utils/baseURL";
+import { BackendURL } from "../utils/backendURL";
 import { ResourceFormChangeEvent } from "../utils/interfaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -59,7 +59,7 @@ export default function AddResourcePage(): JSX.Element {
   //making a post request to the backend to add the resource form
   const postResourceForm = async () => {
     try {
-      await axios.post(BaseURL + "resources", resourceForm);
+      await axios.post(BackendURL + "resources", resourceForm);
       notify();
     } catch (error) {
       window.alert("Failed to post your resoure data:(");
@@ -97,6 +97,8 @@ export default function AddResourcePage(): JSX.Element {
             onChange={(e) => handleChangeFormValue(e)}
             name="resource_name"
             value={resourceForm.resource_name}
+            className="resourceName"
+            required
           ></input>
         </label>
         <label>
@@ -106,6 +108,8 @@ export default function AddResourcePage(): JSX.Element {
             onChange={(e) => handleChangeFormValue(e)}
             name="resource_description"
             value={resourceForm.resource_description}
+            className="resourceDescription"
+            required
           ></input>
         </label>
         <label>
@@ -115,6 +119,8 @@ export default function AddResourcePage(): JSX.Element {
             onChange={(e) => handleChangeFormValue(e)}
             name="author_name"
             value={resourceForm.author_name}
+            required
+            className="resourceAuthorName"
           ></input>
         </label>
         <label>
@@ -124,6 +130,8 @@ export default function AddResourcePage(): JSX.Element {
             onChange={(e) => handleChangeFormValue(e)}
             name="resource_link"
             value={resourceForm.resource_link}
+            required
+            className="resourceLink"
           ></input>
           <label>
             Content Type:
@@ -132,12 +140,16 @@ export default function AddResourcePage(): JSX.Element {
               onChange={(e) => handleChangeFormValue(e)}
               name="resource_content_type"
               value={resourceForm.resource_content_type}
+              required
+              className="resourceContentType"
             ></input>
           </label>
         </label>
         <select
           name="resource_user_recommendation"
           onChange={(e) => handleChangeFormValue(e)}
+          required
+          className="resourceRecommendation"
         >
           <option value={""}>Choose recommendation type</option>
           <option value={"I recommend this resource after having used it!"}>
@@ -159,6 +171,8 @@ export default function AddResourcePage(): JSX.Element {
             onChange={(e) => handleChangeFormValue(e)}
             name="resource_recommendation_reason"
             value={resourceForm.resource_recommendation_reason}
+            required
+            className="resourceReason"
           ></input>
         </label>
         <div>
@@ -168,6 +182,8 @@ export default function AddResourcePage(): JSX.Element {
             type="checkbox"
             name="resource_tags"
             onChange={(e) => handleChangeFormValue(e)}
+            required
+            className="resourceTag-TS"
           ></input>
           <label>React</label>
           <input
@@ -175,6 +191,8 @@ export default function AddResourcePage(): JSX.Element {
             type="checkbox"
             name="resource_tags"
             onChange={(e) => handleChangeFormValue(e)}
+            className="resourceTag-React"
+            required
           ></input>
           <label>APIs</label>
           <input
@@ -182,6 +200,8 @@ export default function AddResourcePage(): JSX.Element {
             type="checkbox"
             name="resource_tags"
             onChange={(e) => handleChangeFormValue(e)}
+            className="resourceTag-APIs"
+            required
           ></input>
           <label>Node</label>
           <input
@@ -189,6 +209,8 @@ export default function AddResourcePage(): JSX.Element {
             type="checkbox"
             name="resource_tags"
             onChange={(e) => handleChangeFormValue(e)}
+            required
+            className="resourceTag-Node"
           ></input>
         </div>
         <button type="submit">Submit</button>

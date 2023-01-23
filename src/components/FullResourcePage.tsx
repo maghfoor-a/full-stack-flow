@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { BaseURL } from "../utils/baseURL";
+import { BackendURL } from "../utils/backendURL";
 import useFetchResources from "../utils/fetchResources";
 import { IComments } from "../utils/interfaces";
 import "./FullResourcePage.css";
@@ -26,7 +26,7 @@ export default function FullResourcePage(): JSX.Element {
     console.log("fetching comment list from api");
 
     try {
-      const response = await axios.get(BaseURL + "comments/" + id);
+      const response = await axios.get(BackendURL + "comments/" + id);
 
       setCommentList(response.data.rows);
       console.log("newly retreived comments", response.data.rows);
