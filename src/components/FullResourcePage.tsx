@@ -78,8 +78,13 @@ export default function FullResourcePage(): JSX.Element {
     getCommentsFromServer();
   };
 
-    const handleDeleteComment = () =>{
-      console.log("deleter comment")
+    const handleDeleteComment = async (comment_id: number) =>{
+      console.log("deleting comment", comment_id)
+      try{
+        await axios.delete(BaseURL + "comments/" + comment_id)
+      } catch(error){
+        console.log("could not delete comment")
+      }
     }
 
   //--------------------------------------------------------------------------------------return HTML
@@ -139,6 +144,7 @@ export default function FullResourcePage(): JSX.Element {
                       {comment.user_id}: {comment.comment_text} - Likes:
                       {comment.comment_Likes}
                     </p>
+                    <button onClick={()=>handleDeleteComment(comment.comment_id)}>delete</button>
                   </div>
                 );
               })}
