@@ -62,7 +62,7 @@ export default function FullResourcePage(): JSX.Element {
   const handleLikedComment = async (comment_id: number) => {
     try {
       await axios.patch(BackendURL + `comments/likes/${comment_id}`);
-      getCommentsFromServer();
+      updateComments();
     } catch (error) {
       console.error("could not like comment", error);
       window.alert("Failed to like comment, please try again later");
@@ -122,7 +122,6 @@ export default function FullResourcePage(): JSX.Element {
                   <p>
                     {comment.user_id}: {comment.comment_text} - Likes:
                     {comment.comment_likes}
-
                   </p>
                   <button
                     onClick={() => handleDeleteComment(comment.comment_id)}
@@ -134,7 +133,6 @@ export default function FullResourcePage(): JSX.Element {
                   >
                     like
                   </button>
-
                 </div>
               );
             })}
