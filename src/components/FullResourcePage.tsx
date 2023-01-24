@@ -8,7 +8,6 @@ import useFetchComments from "../utils/useFetchComments";
 
 //--------------------------------------------------------------------------------------JSX Element declaration
 export default function FullResourcePage(): JSX.Element {
-
   const { resources } = useFetchResources();
 
   const [commentSubmit, setCommentSubmit] = useState({
@@ -26,8 +25,7 @@ export default function FullResourcePage(): JSX.Element {
   });
 
   //--------------------------------------------------------------------------------------GET comments from SERVER
-  const { commentList, updateComments } = useFetchComments(id)
-
+  const { commentList, updateComments } = useFetchComments(id);
 
   const postCommentToServer = async (user_id: number, comment_text: string) => {
     if (comment_text.length > 0 && id) {
@@ -36,7 +34,7 @@ export default function FullResourcePage(): JSX.Element {
           resource_id: id,
           user_id: user_id,
           comment_text: comment_text,
-        })
+        });
         updateComments();
       } catch (error) {
         console.log("error from post");
