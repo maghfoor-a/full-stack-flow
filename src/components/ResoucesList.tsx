@@ -6,10 +6,12 @@ import { BackendURL } from "../utils/backendURL";
 import useFetchResources from "../utils/fetchResources";
 
 export function ResourcesList(): JSX.Element {
-  const resources = useFetchResources();
+
+  const { resources, updateResources } = useFetchResources();
 
   const handleLikeResource = async (id: number) => {
     await axios.patch(BackendURL + `resources/likes/${id}`);
+    updateResources();
   };
   return (
     <>
