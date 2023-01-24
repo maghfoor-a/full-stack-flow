@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BackendURL } from "./backendURL";
-import { IResource, useFetchResourcesType } from "./interfaces";
+import { IResource, UseFetchResourcesType } from "./interfaces";
 
-export default function useFetchResources(): useFetchResourcesType {
+export default function useFetchResources(): UseFetchResourcesType {
   const [resources, setResouces] = useState<IResource[]>([]);
 
   const updateResources = () => {

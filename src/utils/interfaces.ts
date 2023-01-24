@@ -35,7 +35,7 @@ export type ResourceFormChangeEvent = React.ChangeEvent<
   HTMLInputElement | HTMLSelectElement
 >;
 
-export type useFetchResourcesType = {
+export type UseFetchResourcesType = {
   resources: IResource[];
   updateResources: () => void;
 };
