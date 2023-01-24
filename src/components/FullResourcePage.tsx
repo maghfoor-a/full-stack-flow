@@ -48,18 +48,18 @@ export default function FullResourcePage(): JSX.Element {
   }, [getCommentsFromServer]);
 
   const postCommentToServer = async (
-   
+
     user_id: number,
     comment_text: string,
-   
+
   ) => {
     if ((comment_text.length > 0) && id) {
       try {
-        await axios.post(BaseURL + "comments", {
+        await axios.post(BackendURL + "comments", {
           resource_id: id,
           user_id: user_id,
           comment_text: comment_text,
-          
+
         });
       } catch (error) {
         console.log("error from post");
@@ -81,14 +81,14 @@ export default function FullResourcePage(): JSX.Element {
     getCommentsFromServer();
   };
 
-    const handleDeleteComment = async (comment_id: number) =>{
-      console.log("deleting comment", comment_id)
-      try{
-        await axios.delete(BaseURL + "comments/" + comment_id)
-      } catch(error){
-        console.log("could not delete comment")
-      }
+  const handleDeleteComment = async (comment_id: number) => {
+    console.log("deleting comment", comment_id)
+    try {
+      await axios.delete(BackendURL + "comments/" + comment_id)
+    } catch (error) {
+      console.log("could not delete comment")
     }
+  }
 
   //--------------------------------------------------------------------------------------return HTML
   return (
@@ -108,52 +108,52 @@ export default function FullResourcePage(): JSX.Element {
             <div>
               <h1>add a comment</h1>
 
-              
-            <form onSubmit={handleCommentSubmit}>
+
+              <form onSubmit={handleCommentSubmit}>
 
 
-              <input
-                placeholder="user_id"
-                type="number"
-                value={commentSubmit.user_id}
-                onChange={(e) =>
-                  setCommentSubmit({
-                    ...commentSubmit,
-                    user_id: e.target.valueAsNumber,
-                  })
-                }
-              />
-               <input
-                placeholder="comment here"
-                type="text"
-                value={commentSubmit.comment_text}
-                onChange={(e) =>
-                  setCommentSubmit({
-                    ...commentSubmit,
-                    comment_text: e.target.value,
-                  })
-                }
-              />
-              <input type="submit" />
-            </form>
-          </div>
-            </div>
-            <h1 className="comments-title">comments:</h1>
-            <div className="comment-container">
-              {commentList?.map((comment) => {
-                return (
-                  <div className="comment-item" key={comment.comment_id}>
-                    <p>
-                      {comment.user_id}: {comment.comment_text} - Likes:
-                      {comment.comment_Likes}
-                    </p>
-                    <button onClick={()=>handleDeleteComment(comment.comment_id)}>delete</button>
-                  </div>
-                );
-              })}
+                <input
+                  placeholder="user_id"
+                  type="number"
+                  value={commentSubmit.user_id}
+                  onChange={(e) =>
+                    setCommentSubmit({
+                      ...commentSubmit,
+                      user_id: e.target.valueAsNumber,
+                    })
+                  }
+                />
+                <input
+                  placeholder="comment here"
+                  type="text"
+                  value={commentSubmit.comment_text}
+                  onChange={(e) =>
+                    setCommentSubmit({
+                      ...commentSubmit,
+                      comment_text: e.target.value,
+                    })
+                  }
+                />
+                <input type="submit" />
+              </form>
             </div>
           </div>
-        
+          <h1 className="comments-title">comments:</h1>
+          <div className="comment-container">
+            {commentList?.map((comment) => {
+              return (
+                <div className="comment-item" key={comment.comment_id}>
+                  <p>
+                    {comment.user_id}: {comment.comment_text} - Likes:
+                    {comment.comment_Likes}
+                  </p>
+                  <button onClick={() => handleDeleteComment(comment.comment_id)}>delete</button>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
       )}
     </>
   );
