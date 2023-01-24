@@ -37,5 +37,5 @@ export type ResourceFormChangeEvent = React.ChangeEvent<
 
 export type useFetchResourcesType = {
   resources: IResource[];
-  updateResources: () => void
-}
+  updateResources: () => void;
+};

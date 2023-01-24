@@ -6,7 +6,6 @@ import { BackendURL } from "../utils/backendURL";
 import useFetchResources from "../utils/fetchResources";
 
 export function ResourcesList(): JSX.Element {
-
   const { resources, updateResources } = useFetchResources();
 
   const handleLikeResource = async (id: number) => {
