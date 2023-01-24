@@ -2,7 +2,7 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { BackendURL } from "../utils/backendURL";
-import useFetchResources from "../utils/fetchResources";
+import useFetchResources from "../utils/useFetchResources";
 import { IComments } from "../utils/interfaces";
 import "./FullResourcePage.css";
 

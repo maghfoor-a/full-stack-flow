@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./ResourcesList.css";
 import axios from "axios";
 import { BackendURL } from "../utils/backendURL";
-import useFetchResources from "../utils/fetchResources";
+import useFetchResources from "../utils/useFetchResources";
 
 export function ResourcesList(): JSX.Element {
   const { resources, updateResources } = useFetchResources();
