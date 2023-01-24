@@ -75,8 +75,19 @@ export default function FullResourcePage(): JSX.Element {
     console.log("deleting comment", comment_id);
     try {
       await axios.delete(BackendURL + "comments/" + comment_id);
+      getCommentsFromServer();
     } catch (error) {
       console.log("could not delete comment");
+    }
+  };
+
+  const handleLikedComment = async (comment_id: number) => {
+    try {
+      await axios.patch(BackendURL + `comments/likes/${comment_id}`);
+      getCommentsFromServer();
+    } catch (error) {
+      console.error("could not like comment", error);
+      window.alert("Failed to like comment, please try again later");
     }
   };
 
@@ -132,13 +143,20 @@ export default function FullResourcePage(): JSX.Element {
                 <div className="comment-item" key={comment.comment_id}>
                   <p>
                     {comment.user_id}: {comment.comment_text} - Likes:
-                    {comment.comment_Likes}
+                    {comment.comment_likes}
+
                   </p>
                   <button
                     onClick={() => handleDeleteComment(comment.comment_id)}
                   >
                     delete
                   </button>
+                  <button
+                    onClick={() => handleLikedComment(comment.comment_id)}
+                  >
+                    like
+                  </button>
+
                 </div>
               );
             })}
