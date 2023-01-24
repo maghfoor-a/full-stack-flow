@@ -10,11 +10,11 @@ import "./FullResourcePage.css";
 export default function FullResourcePage(): JSX.Element {
   //--------------------------------------------------------------------------------------USESTATE declarations
   const [commentList, setCommentList] = useState<IComments[]>();
-  const resourceList = useFetchResources();
+  const { resources } = useFetchResources();
 
   //--------------------------------------------------------------------------------------Defining selected resource
   const { id } = useParams();
-  const resource = resourceList.find((resource) => {
+  const resource = resources.find((resource) => {
     if (id) {
       return resource.resource_id === parseInt(id);
     }
