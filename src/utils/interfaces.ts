@@ -32,7 +32,7 @@ export interface IComments {
   user_id: number;
   resource_id: number;
   comment_text: string;
-  comment_Likes: number;
+  comment_likes: number;
   comment_time: number;
 }
 
