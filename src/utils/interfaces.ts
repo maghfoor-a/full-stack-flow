@@ -34,3 +34,8 @@ export interface IComments {
 export type ResourceFormChangeEvent = React.ChangeEvent<
   HTMLInputElement | HTMLSelectElement
 >;
+
+export type useFetchResourcesType = {
+  resources: IResource[];
+  updateResources: () => void
+}
