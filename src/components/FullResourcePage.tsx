@@ -2,7 +2,7 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { BackendURL } from "../utils/backendURL";
-import useFetchResources from "../utils/fetchResources";
+import useFetchResources from "../utils/useFetchResources";
 import { IComments } from "../utils/interfaces";
 import "./FullResourcePage.css";
 
@@ -10,7 +10,9 @@ import "./FullResourcePage.css";
 export default function FullResourcePage(): JSX.Element {
   //--------------------------------------------------------------------------------------USESTATE declarations
   const [commentList, setCommentList] = useState<IComments[]>();
-  const resourceList = useFetchResources();
+
+  const { resources } = useFetchResources();
+
   const [commentSubmit, setCommentSubmit] = useState({
     user_id: 1,
     comment_text: "",
@@ -18,7 +20,7 @@ export default function FullResourcePage(): JSX.Element {
 
   //--------------------------------------------------------------------------------------Defining selected resource
   const { id } = useParams();
-  const resource = resourceList.find((resource) => {
+  const resource = resources.find((resource) => {
     if (id) {
       return resource.resource_id === parseInt(id);
     }
@@ -142,6 +144,7 @@ export default function FullResourcePage(): JSX.Element {
                   <p>
                     {comment.user_id}: {comment.comment_text} - Likes:
                     {comment.comment_likes}
+
                   </p>
                   <button
                     onClick={() => handleDeleteComment(comment.comment_id)}
@@ -153,6 +156,7 @@ export default function FullResourcePage(): JSX.Element {
                   >
                     like
                   </button>
+
                 </div>
               );
             })}

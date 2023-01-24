@@ -16,11 +16,6 @@ export interface IResource {
 
 export interface ResourcesListProps {
   resources: IResource[];
-  handleResourceClick: (resource: IResource) => void;
-}
-
-export interface HomePageProps {
-  handleResourceClick: (resource: IResource) => void;
 }
 
 export interface FullResourcesPageProps {
@@ -39,3 +34,8 @@ export interface IComments {
 export type ResourceFormChangeEvent = React.ChangeEvent<
   HTMLInputElement | HTMLSelectElement
 >;
+
+export type UseFetchResourcesType = {
+  resources: IResource[];
+  updateResources: () => void;
+};
