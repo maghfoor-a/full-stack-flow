@@ -2,12 +2,37 @@ import { BrowserRouter } from "react-router-dom";
 import MainContent from "./components/MainContent";
 import Navbar from "./components/Navbar";
 import "./App.css";
+import { useState } from "react";
+import { IUser } from "./utils/interfaces";
 
 function App(): JSX.Element {
+  const [currentUser, setCurrentUser] = useState<IUser | "Guest">(() => {
+    const saved = localStorage.getItem("user");
+    if (saved) {
+      const intialUser = JSON.parse(saved);
+      return intialUser;
+    }
+    return "Guest";
+  });
+
+  function handleUserClicked(
+    e: React.ChangeEvent<HTMLSelectElement>,
+    usersList: IUser[]
+  ) {
+    const clickedUser = usersList.filter(
+      (user) => user.user_id.toString() === e.target.value
+    )[0];
+    setCurrentUser({
+      user_id: clickedUser.user_id,
+      user_name: clickedUser.user_name,
+      user_isfaculty: clickedUser.user_isfaculty,
+    });
+  }
+  console.log(currentUser);
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <Navbar handleUserClicked={handleUserClicked} />
         <MainContent />
       </BrowserRouter>
     </>
