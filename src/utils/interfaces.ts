@@ -39,3 +39,9 @@ export type UseFetchResourcesType = {
   resources: IResource[];
   updateResources: () => void;
 };
+
+export interface IUser {
+  user_id: number;
+  user_name: string;
+  user_isfaculty: boolean;
+}
