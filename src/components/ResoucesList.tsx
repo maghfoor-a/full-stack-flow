@@ -5,6 +5,17 @@ import axios from "axios";
 import { BackendURL } from "../utils/backendURL";
 import useFetchResources from "../utils/useFetchResources";
 
+function textSummary(text: string, length: number) {
+  let returnText = "";
+
+  if (text.length > length) {
+    returnText = text.slice(0, length) + "...";
+  } else {
+    returnText = text;
+  }
+  return returnText;
+}
+
 export function ResourcesList(): JSX.Element {
   const { resources, updateResources } = useFetchResources();
 
@@ -37,7 +48,7 @@ export function ResourcesList(): JSX.Element {
 
                     <p className="authorName">{resource.author_name}</p>
                     <p className="description">
-                      {resource.resource_description}
+                      {textSummary(resource.resource_description, 50)}
                     </p>
                     <p>{resource.resource_tags}</p>
 
