@@ -1,5 +1,5 @@
 import axios from "axios";
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BackendURL } from "./backendURL";
 import { IUser } from "./interfaces";
 

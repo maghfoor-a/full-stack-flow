@@ -12,7 +12,7 @@ interface NavProps {
 }
 
 export default function Navbar({ handleUserClicked }: NavProps): JSX.Element {
-  const { usersList, updateUsers } = useFetchUsers();
+  const { usersList } = useFetchUsers();
   return (
     <div className="navbar">
       <NavLink to="/" className="navbarTitle navitem">
