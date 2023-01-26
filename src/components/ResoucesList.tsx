@@ -27,7 +27,7 @@ export function ResourcesList(): JSX.Element {
   };
   return (
     <>
-      <div>
+      <div className="searchBar">
         <input
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
