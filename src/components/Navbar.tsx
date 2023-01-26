@@ -9,9 +9,13 @@ interface NavProps {
     e: React.ChangeEvent<HTMLSelectElement>,
     usersList: IUser[]
   ) => void;
+  currentUser: IUser | "Guest";
 }
 
-export default function Navbar({ handleUserClicked }: NavProps): JSX.Element {
+export default function Navbar({
+  handleUserClicked,
+  currentUser,
+}: NavProps): JSX.Element {
   const { usersList } = useFetchUsers();
   return (
     <div className="navbar">
@@ -27,7 +31,11 @@ export default function Navbar({ handleUserClicked }: NavProps): JSX.Element {
         </option>
         {usersList.map((user) => {
           return (
-            <option value={user.user_id} key={user.user_id}>
+            <option
+              value={user.user_id}
+              key={user.user_id}
+              selected={currentUser !== "Guest" && user.user_id == currentUser.user_id}
+            >
               {user.user_name}
             </option>
           );
