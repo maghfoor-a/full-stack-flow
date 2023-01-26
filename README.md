@@ -1,33 +1,26 @@
-# Simplified CRA (Create-React-App) starter
+# Full Stack Flow
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+Full Stack Flow allows academy scholars to find useful resources to help their learning on the programme!
 
-> This is part of Academy's technical curriculum for **The Mark**. All parts of that curriculum, including this project, are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>
+## Description
 
-This project was created using [Create React App](https://create-react-app.dev/)
+Full Stack Flow is a team project. Contributors include [Tinashe](https://github.com/tinashe-gutu), [Sinbad](https://github.com/syndercres) and [Maghfoor](https://github.com/maghfoor-a). It is a a web application that academy scholars can use to aid their studies while on the programme and beyond. Each scholar is able to add a resource, leave comment on a resource and resources also have like dislike functionality. Web application is accessible to any and everyone on the internet but only Academy scholars are able to contribute to the resources.
 
-Extra features added:
+## Dependencies
 
--   Add CI with GitHub Actions
--   Add custom eslint config
--   Prettier
--   TypeScript
--   Removed unneccessary logo images
--   Removed unnecessary web-vitals
--   Added an example extra module and unit test (greet.ts)
--   Added more scripts to package.json
+- react-toastify
+- axios
+- date-fns
+- cypress
+- react-router
+  -react-router-dom
 
-```
-    "test": "react-scripts test --watchAll=false",
-    "test:watch": "react-scripts test",
-    "format": "prettier --write src",
-    "format:check": "prettier --check src",
-    "lint": "eslint src",
-    "type-check": "tsc --noEmit"
-```
+## Tech Stack
 
-## Learn more about Create-React-App
+- TypeScript
+- React
+- NodeJs
+- Express
+- Jest
 
-You can learn more in the [Create React App documentation](https://create-react-app.dev/).
-
-To learn React, check out the [React documentation](https://reactjs.org/) or the [new docs (in beta)](https://beta.reactjs.org/)
+Check it out by clicking [here.](https://full-stack-flow.netlify.app/)

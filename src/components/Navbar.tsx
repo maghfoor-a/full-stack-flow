@@ -1,9 +1,22 @@
 import { NavLink } from "react-router-dom";
+import { IUser } from "../utils/interfaces";
+
 import useFetchUsers from "../utils/useFetchUsers";
 import "./Navbar.css";
 
-export default function Navbar(): JSX.Element {
-  const { usersList, updateUsers } = useFetchUsers();
+interface NavProps {
+  handleUserClicked: (
+    e: React.ChangeEvent<HTMLSelectElement>,
+    usersList: IUser[]
+  ) => void;
+  currentUser: IUser | "Guest";
+}
+
+export default function Navbar({
+  handleUserClicked,
+  currentUser,
+}: NavProps): JSX.Element {
+  const { usersList } = useFetchUsers();
   return (
     <div className="navbar">
       <NavLink to="/" className="navbarTitle navitem">
@@ -12,11 +25,19 @@ export default function Navbar(): JSX.Element {
       <NavLink to="/addresource" className="navbarAddresource navitem">
         Add Resource!
       </NavLink>
-      <select>
-        <option value="">Guest</option>
+      <select onChange={(e) => handleUserClicked(e, usersList)}>
+        <option value="Guest" data-is-faculty={"false"}>
+          Guest
+        </option>
         {usersList.map((user) => {
           return (
-            <option value={user.user_name} key={user.user_id}>
+            <option
+              value={user.user_id}
+              key={user.user_id}
+              selected={
+                currentUser !== "Guest" && user.user_id === currentUser.user_id
+              }
+            >
               {user.user_name}
             </option>
           );
