@@ -4,11 +4,13 @@ import { BackendURL } from "../utils/backendURL";
 import { ResourceFormChangeEvent } from "../utils/interfaces";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import useFetchResources from "../utils/useFetchResources";
+import { excludesResource } from "../utils/excludesResource";
 //add userID to the resource Form
 
 //--------------------------------------------------------------------------------------JSX function declaration
 export default function AddResourcePage(): JSX.Element {
+  const { resources } = useFetchResources();
   const [resourceForm, setResourceForm] = useState({
     resource_name: "",
     author_name: "",
@@ -58,12 +60,14 @@ export default function AddResourcePage(): JSX.Element {
 
   //making a post request to the backend to add the resource form
   const postResourceForm = async () => {
-    try {
-      await axios.post(BackendURL + "resources", resourceForm);
-      notify();
-    } catch (error) {
-      window.alert("Failed to post your resoure data:(");
-      console.error(error);
+    if (excludesResource(resources, resourceForm.resource_link)) {
+      try {
+        await axios.post(BackendURL + "resources", resourceForm);
+        notify();
+      } catch (error) {
+        window.alert("Failed to post your resoure data:(");
+        console.error(error);
+      }
     }
   };
 
