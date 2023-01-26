@@ -27,12 +27,13 @@ function App(): JSX.Element {
       user_name: clickedUser.user_name,
       user_isfaculty: clickedUser.user_isfaculty,
     });
+    localStorage.setItem("user", JSON.stringify(clickedUser));
   }
   console.log(currentUser);
   return (
     <>
       <BrowserRouter>
-        <Navbar handleUserClicked={handleUserClicked} />
+        <Navbar handleUserClicked={handleUserClicked} currentUser={currentUser}/>
         <MainContent />
       </BrowserRouter>
     </>
