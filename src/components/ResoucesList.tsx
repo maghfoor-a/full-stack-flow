@@ -96,7 +96,7 @@ export function ResourcesList(): JSX.Element {
                 .toLocaleLowerCase()
                 .includes(searchValue.toLocaleLowerCase())
             )
-            .filter(resource => resource.resource_tags.includes(filterTags))
+            .filter((resource) => resource.resource_tags.includes(filterTags))
             .map((resource) => {
               return (
                 <div className="resource-item" key={resource.resource_id}>
