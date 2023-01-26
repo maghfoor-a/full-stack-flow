@@ -29,6 +29,7 @@ function App(): JSX.Element {
     });
     localStorage.setItem("user", JSON.stringify(clickedUser));
   }
+
   function handleLogOut() {
     setCurrentUser("Guest");
     localStorage.removeItem("user");
