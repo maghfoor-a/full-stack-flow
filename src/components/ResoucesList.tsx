@@ -20,6 +20,23 @@ function textSummary(text: string, length: number) {
 export function ResourcesList(): JSX.Element {
   const { resources, updateResources } = useFetchResources();
   const [searchValue, setSearchValue] = useState("");
+  const [filterTags, setFilterTags] = useState("");
+
+  const handleTagsFilter = (selectedValue: string) => {
+    const tagsArray = filterTags.split(", ");
+    if (tagsArray.includes(selectedValue)) {
+      const filteredTags = tagsArray.filter((tag) => tag !== selectedValue);
+      const arrayToString = filteredTags.join(", ");
+      return arrayToString;
+    }
+    if (filterTags.length === 0) {
+      return selectedValue;
+    }
+    if (filterTags.includes(selectedValue)) {
+      return "";
+    }
+    return filterTags + ", " + selectedValue;
+  };
 
   const handleLikeResource = async (id: number) => {
     await axios.patch(BackendURL + `resources/likes/${id}`);
@@ -27,6 +44,44 @@ export function ResourcesList(): JSX.Element {
   };
   return (
     <>
+      <div>
+        <label>TypeScript</label>
+        <input
+          value="TypeScript"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          required
+          className="resourceTag-TS"
+        ></input>
+        <label>React</label>
+        <input
+          value="React"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          className="resourceTag-React"
+          required
+        ></input>
+        <label>APIs</label>
+        <input
+          value="APIs"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          className="resourceTag-APIs"
+          required
+        ></input>
+        <label>Node</label>
+        <input
+          value="Node"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          required
+          className="resourceTag-Node"
+        ></input>
+      </div>
       <div className="searchBar">
         <input
           value={searchValue}
@@ -41,6 +96,7 @@ export function ResourcesList(): JSX.Element {
                 .toLocaleLowerCase()
                 .includes(searchValue.toLocaleLowerCase())
             )
+            .filter(resource => resource.resource_tags.includes(filterTags))
             .map((resource) => {
               return (
                 <div className="resource-item" key={resource.resource_id}>
