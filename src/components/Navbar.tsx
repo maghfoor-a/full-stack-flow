@@ -9,11 +9,13 @@ interface NavProps {
     e: React.ChangeEvent<HTMLSelectElement>,
     usersList: IUser[]
   ) => void;
+  handleLogOut: () => void;
   currentUser: IUser | "Guest";
 }
 
 export default function Navbar({
   handleUserClicked,
+  handleLogOut,
   currentUser,
 }: NavProps): JSX.Element {
   const { usersList } = useFetchUsers();
@@ -43,6 +45,11 @@ export default function Navbar({
           );
         })}
       </select>
+      {currentUser !== "Guest" && (
+        <button onClick={handleLogOut} className="log-out">
+          Log out
+        </button>
+      )}
     </div>
   );
 }
