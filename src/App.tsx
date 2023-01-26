@@ -33,7 +33,10 @@ function App(): JSX.Element {
   return (
     <>
       <BrowserRouter>
-        <Navbar handleUserClicked={handleUserClicked} currentUser={currentUser}/>
+        <Navbar
+          handleUserClicked={handleUserClicked}
+          currentUser={currentUser}
+        />
         <MainContent />
       </BrowserRouter>
     </>

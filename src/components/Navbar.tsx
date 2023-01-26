@@ -34,7 +34,9 @@ export default function Navbar({
             <option
               value={user.user_id}
               key={user.user_id}
-              selected={currentUser !== "Guest" && user.user_id == currentUser.user_id}
+              selected={
+                currentUser !== "Guest" && user.user_id === currentUser.user_id
+              }
             >
               {user.user_name}
             </option>
