@@ -29,13 +29,18 @@ function App(): JSX.Element {
     });
     localStorage.setItem("user", JSON.stringify(clickedUser));
   }
-  console.log(currentUser);
+
+  function handleLogOut() {
+    setCurrentUser("Guest");
+    localStorage.removeItem("user");
+  }
   return (
     <>
       <BrowserRouter>
         <Navbar
           handleUserClicked={handleUserClicked}
           currentUser={currentUser}
+          handleLogOut={handleLogOut}
         />
         <MainContent />
       </BrowserRouter>
