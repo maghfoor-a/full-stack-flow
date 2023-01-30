@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { IUser } from "../utils/interfaces";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import useFetchUsers from "../utils/useFetchUsers";
 import "./Navbar.css";
@@ -12,6 +14,8 @@ interface NavProps {
   handleLogOut: () => void;
   currentUser: IUser | "Guest";
 }
+
+const notify = () => toast("Please sign in to add a resource");
 
 export default function Navbar({
   handleUserClicked,
@@ -54,6 +58,7 @@ export default function Navbar({
           Log out
         </button>
       )}
+      <ToastContainer />
     </div>
   );
 }
