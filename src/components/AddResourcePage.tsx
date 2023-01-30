@@ -24,7 +24,7 @@ export default function AddResourcePage(): JSX.Element {
     resource_dislikes: 0,
     resource_link: "",
   });
-
+  const user = localStorage.getItem("user");
   //--------------------------------------------------------------------------------------TAGS handler function
   const handleResourceTags = (selectedValue: string) => {
     const tagsArray = resourceForm.resource_tags.split(", ");
