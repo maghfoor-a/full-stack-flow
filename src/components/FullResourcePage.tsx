@@ -5,13 +5,15 @@ import { BackendURL } from "../utils/backendURL";
 import useFetchResources from "../utils/useFetchResources";
 import "./FullResourcePage.css";
 import useFetchComments from "../utils/useFetchComments";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //--------------------------------------------------------------------------------------JSX Element declaration
 export default function FullResourcePage(): JSX.Element {
   const { resources } = useFetchResources();
 
   const [commentSubmit, setCommentSubmit] = useState({
-    user_id: 1,
+    user_id: 0,
     comment_text: "",
   });
 
@@ -23,7 +25,7 @@ export default function FullResourcePage(): JSX.Element {
     }
     return false;
   });
-
+  const user = localStorage.getItem("user");
   //--------------------------------------------------------------------------------------GET comments from SERVER
   const { commentList, updateComments } = useFetchComments(id);
 
@@ -135,14 +137,16 @@ export default function FullResourcePage(): JSX.Element {
               return (
                 <div className="comment-item" key={comment.comment_id}>
                   <p>
-                    {comment.user_id}: {comment.comment_text} - Likes:
+                    {comment.user_name}: {comment.comment_text} - Likes:
                     {comment.comment_likes}
                   </p>
-                  <button
-                    onClick={() => handleDeleteComment(comment.comment_id)}
-                  >
-                    delete
-                  </button>
+                  {user && comment.user_id === JSON.parse(user).user_id && (
+                    <button
+                      onClick={() => handleDeleteComment(comment.comment_id)}
+                    >
+                      delete
+                    </button>
+                  )}
                   <button
                     onClick={() => handleLikedComment(comment.comment_id)}
                   >
