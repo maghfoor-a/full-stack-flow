@@ -24,4 +24,4 @@ jobs:
     - name: Check app builds
       run: yarn build
     - name: Cypress run
-    - uses: cypress-io/github-action@v5.x.x
+        uses: cypress-io/github-action@v5.x.x
