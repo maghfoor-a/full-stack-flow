@@ -5,13 +5,15 @@ import { BackendURL } from "../utils/backendURL";
 import useFetchResources from "../utils/useFetchResources";
 import "./FullResourcePage.css";
 import useFetchComments from "../utils/useFetchComments";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //--------------------------------------------------------------------------------------JSX Element declaration
 export default function FullResourcePage(): JSX.Element {
   const { resources } = useFetchResources();
 
   const [commentSubmit, setCommentSubmit] = useState({
-    user_id: 1,
+    user_id: 0,
     comment_text: "",
   });
 
@@ -23,7 +25,7 @@ export default function FullResourcePage(): JSX.Element {
     }
     return false;
   });
-
+  const user = localStorage.getItem("user");
   //--------------------------------------------------------------------------------------GET comments from SERVER
   const { commentList, updateComments } = useFetchComments(id);
 
@@ -45,8 +47,11 @@ export default function FullResourcePage(): JSX.Element {
   };
 
   const handleCommentSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    postCommentToServer(commentSubmit.user_id, commentSubmit.comment_text);
+    if (user) {
+      postCommentToServer(JSON.parse(user).user_id, commentSubmit.comment_text);
+    } else {
+      signIn();
+    }
   };
 
   const handleDeleteComment = async (comment_id: number) => {
@@ -68,6 +73,9 @@ export default function FullResourcePage(): JSX.Element {
       window.alert("Failed to like comment, please try again later");
     }
   };
+  const signIn = () => {
+    toast("Sign in to submit comment");
+  };
 
   //--------------------------------------------------------------------------------------return HTML
   return (
@@ -87,15 +95,24 @@ export default function FullResourcePage(): JSX.Element {
             <div>
               <h1>add a comment</h1>
 
-              <form onSubmit={handleCommentSubmit}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  user ? handleCommentSubmit(e) : signIn();
+                }}
+              >
                 <input
-                  placeholder="user_id"
-                  type="number"
-                  value={commentSubmit.user_id}
-                  onChange={(e) =>
+                  placeholder={
+                    user
+                      ? JSON.parse(user).user_name
+                      : "Sign in to add a comment"
+                  }
+                  type="text"
+                  value={user ? JSON.parse(user).user_name : ""}
+                  onChange={() =>
                     setCommentSubmit({
                       ...commentSubmit,
-                      user_id: e.target.valueAsNumber,
+                      user_id: user && JSON.parse(user).user_id,
                     })
                   }
                 />
@@ -120,14 +137,16 @@ export default function FullResourcePage(): JSX.Element {
               return (
                 <div className="comment-item" key={comment.comment_id}>
                   <p>
-                    {comment.user_id}: {comment.comment_text} - Likes:
+                    {comment.user_name}: {comment.comment_text} - Likes:
                     {comment.comment_likes}
                   </p>
-                  <button
-                    onClick={() => handleDeleteComment(comment.comment_id)}
-                  >
-                    delete
-                  </button>
+                  {user && comment.user_id === JSON.parse(user).user_id && (
+                    <button
+                      onClick={() => handleDeleteComment(comment.comment_id)}
+                    >
+                      delete
+                    </button>
+                  )}
                   <button
                     onClick={() => handleLikedComment(comment.comment_id)}
                   >
@@ -137,6 +156,7 @@ export default function FullResourcePage(): JSX.Element {
               );
             })}
           </div>
+          <ToastContainer />
         </div>
       )}
     </>

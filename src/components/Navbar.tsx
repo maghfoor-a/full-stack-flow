@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { IUser } from "../utils/interfaces";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import useFetchUsers from "../utils/useFetchUsers";
 import "./Navbar.css";
@@ -13,6 +15,8 @@ interface NavProps {
   currentUser: IUser | "Guest";
 }
 
+const notify = () => toast("Please sign in to add a resource");
+
 export default function Navbar({
   handleUserClicked,
   handleLogOut,
@@ -24,12 +28,16 @@ export default function Navbar({
       <NavLink to="/" className="navbarTitle navitem">
         Full-Stack-Flow
       </NavLink>
-      <NavLink to="/addresource" className="navbarAddresource navitem">
+      <NavLink
+        to={currentUser !== "Guest" ? "/addresource" : "#"}
+        onClick={() => currentUser === "Guest" && notify()}
+        className="navbarAddresource navitem"
+      >
         Add Resource!
       </NavLink>
       <select onChange={(e) => handleUserClicked(e, usersList)}>
         <option value="Guest" data-is-faculty={"false"}>
-          Guest
+          Sign In
         </option>
         {usersList.map((user) => {
           return (
@@ -50,6 +58,7 @@ export default function Navbar({
           Log out
         </button>
       )}
+      <ToastContainer />
     </div>
   );
 }
