@@ -3,23 +3,23 @@ body {
 }
 
 .resources-information {
-  background-color:#FDF5DF;
-  color: #F92C85;
+  background-color: #fdf5df;
+  color: #f92c85;
   padding: 20px;
   border-radius: 15px;
 }
 
 .comment-section {
-  background-color:#5EBEC4;
-  color: #FDF5DF;
+  background-color: #5ebec4;
+  color: #fdf5df;
   padding: 20px;
   border-radius: 15px;
   margin-top: 20px;
 }
 
 .comments-title {
-  background-color: #FDF5DF;
-  color: #5EBEC4;
+  background-color: #fdf5df;
+  color: #5ebec4;
   padding: 5px;
   border-radius: 15px;
   margin-top: 20px;
@@ -30,20 +30,20 @@ body {
 }
 
 .comment-item {
-  background-color: #5EBEC4;
-  color: #FDF5DF;
+  background-color: #5ebec4;
+  color: #fdf5df;
   padding: 5px;
   border-radius: 15px;
   margin-bottom: 10px;
 }
-.comment-buttons{
- color: #5EBEC4;
+.comment-buttons {
+  color: #5ebec4;
 }
-.delete-button{
+.delete-button {
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
-.like-button{
+.like-button {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }

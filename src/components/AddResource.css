@@ -1,6 +1,6 @@
-.input-form{
-    margin: 20px;
-    display: grid;
-    column-gap: 20px;
+.input-form {
+  margin: 20px;
+  display: grid;
+  column-gap: 20px;
   row-gap: 20px;
 }

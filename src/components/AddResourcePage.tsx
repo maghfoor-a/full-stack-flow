@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useFetchResources from "../utils/useFetchResources";
 import { excludesResource } from "../utils/excludesResource";
-import "./AddResource.css"
+import "./AddResource.css";
 //add userID to the resource Form
 
 //--------------------------------------------------------------------------------------JSX function declaration
@@ -131,10 +131,10 @@ export default function AddResourcePage(): JSX.Element {
   //--------------------------------------------------------------------------------------HTML returned
   return (
     <>
-    <div className="title">
-      <h1>This is AddResourcePage.</h1>
+      <div className="title">
+        <h1>This is AddResourcePage.</h1>
       </div>
-      
+
       <form className="input-form" onSubmit={handleSubmitButton}>
         <label>
           Resource Name:
@@ -221,9 +221,8 @@ export default function AddResourcePage(): JSX.Element {
             className="resourceReason"
           ></input>
         </label>
-        
+
         <div>
-          
           <label>TypeScript</label>
           <input
             value="TypeScript"
