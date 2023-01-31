@@ -87,15 +87,24 @@ export default function FullResourcePage(): JSX.Element {
             <div>
               <h1>add a comment</h1>
 
-              <form onSubmit={handleCommentSubmit}>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  user ? handleCommentSubmit(e) : signIn();
+                }}
+              >
                 <input
-                  placeholder="user_id"
-                  type="number"
-                  value={commentSubmit.user_id}
-                  onChange={(e) =>
+                  placeholder={
+                    user
+                      ? JSON.parse(user).user_name
+                      : "Sign in to add a comment"
+                  }
+                  type="text"
+                  value={user ? JSON.parse(user).user_name : ""}
+                  onChange={() =>
                     setCommentSubmit({
                       ...commentSubmit,
-                      user_id: e.target.valueAsNumber,
+                      user_id: user && JSON.parse(user).user_id,
                     })
                   }
                 />
