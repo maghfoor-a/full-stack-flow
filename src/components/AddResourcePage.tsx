@@ -283,7 +283,7 @@ export default function AddResourcePage(): JSX.Element {
           ></input>
           <label>Week2</label>
           <input
-            value="Week1"
+            value="Week2"
             type="checkbox"
             checked={tagsChecked.Week2}
             name="resource_tags"
@@ -292,7 +292,7 @@ export default function AddResourcePage(): JSX.Element {
           ></input>
           <label>Week3</label>
           <input
-            value="Week1"
+            value="Week3"
             type="checkbox"
             checked={tagsChecked.Week3}
             name="resource_tags"
@@ -301,7 +301,7 @@ export default function AddResourcePage(): JSX.Element {
           ></input>
           <label>Week4</label>
           <input
-            value="Week1"
+            value="Week4"
             type="checkbox"
             checked={tagsChecked.Week4}
             name="resource_tags"
@@ -310,7 +310,7 @@ export default function AddResourcePage(): JSX.Element {
           ></input>
           <label>Week5</label>
           <input
-            value="Week1"
+            value="Week5"
             type="checkbox"
             checked={tagsChecked.Week5}
             name="resource_tags"
@@ -319,7 +319,7 @@ export default function AddResourcePage(): JSX.Element {
           ></input>
           <label>Week6</label>
           <input
-            value="Week1"
+            value="Week6"
             type="checkbox"
             checked={tagsChecked.Week6}
             name="resource_tags"
