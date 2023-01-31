@@ -57,7 +57,10 @@ export default function AddResourcePage(): JSX.Element {
 
   //notify that post has been sucessful
   const notify = () => toast("Successfully posted your resource!");
-  const signIn = () => toast("Sign in to submit resource");
+  const signIn = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast("Sign in to submit resource");
+  };
 
   //making a post request to the backend to add the resource form
   const postResourceForm = async () => {
@@ -94,7 +97,7 @@ export default function AddResourcePage(): JSX.Element {
   return (
     <>
       <h1>This is AddResourcePage.</h1>
-      <form onSubmit={(e) => (user ? handleSubmitButton(e) : signIn())}>
+      <form onSubmit={(e) => (user ? handleSubmitButton(e) : signIn(e))}>
         <label>
           Resource Name:
           <input
