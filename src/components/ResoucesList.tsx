@@ -39,8 +39,12 @@ export function ResourcesList(): JSX.Element {
   };
 
   const handleLikeResource = async (id: number) => {
-    await axios.patch(BackendURL + `resources/likes/${id}`);
-    updateResources();
+    try {
+      await axios.patch(BackendURL + `resources/likes/${id}`);
+      updateResources();
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <>
