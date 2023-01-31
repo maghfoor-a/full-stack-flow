@@ -4,6 +4,7 @@ body {
 
 .resources-information {
   background-color:#FDF5DF;
+  color: #F92C85;
   padding: 20px;
   border-radius: 15px;
 }
@@ -30,6 +31,7 @@ body {
 
 .comment-item {
   background-color: #5EBEC4;
+  color: #FDF5DF;
   padding: 5px;
   border-radius: 15px;
   margin-bottom: 10px;
