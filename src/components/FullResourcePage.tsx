@@ -45,8 +45,11 @@ export default function FullResourcePage(): JSX.Element {
   };
 
   const handleCommentSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    postCommentToServer(commentSubmit.user_id, commentSubmit.comment_text);
+    if (user) {
+      postCommentToServer(JSON.parse(user).user_id, commentSubmit.comment_text);
+    } else {
+      signIn();
+    }
   };
 
   const handleDeleteComment = async (comment_id: number) => {
@@ -67,6 +70,9 @@ export default function FullResourcePage(): JSX.Element {
       console.error("could not like comment", error);
       window.alert("Failed to like comment, please try again later");
     }
+  };
+  const signIn = () => {
+    toast("Sign in to submit comment");
   };
 
   //--------------------------------------------------------------------------------------return HTML
@@ -146,6 +152,7 @@ export default function FullResourcePage(): JSX.Element {
               );
             })}
           </div>
+          <ToastContainer />
         </div>
       )}
     </>
