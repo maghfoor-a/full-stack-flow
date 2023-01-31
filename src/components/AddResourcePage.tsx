@@ -25,6 +25,13 @@ export default function AddResourcePage(): JSX.Element {
     resource_link: "",
   });
 
+  const [tagsChecked, setTagsChecked] = useState({
+    TypeScript: false,
+    React: false,
+    APIs: false,
+    Node: false,
+  });
+
   //--------------------------------------------------------------------------------------TAGS handler function
   const handleResourceTags = (selectedValue: string) => {
     const tagsArray = resourceForm.resource_tags.split(", ");
@@ -88,6 +95,17 @@ export default function AddResourcePage(): JSX.Element {
       resource_dislikes: 0,
       resource_link: "",
     });
+    setTagsChecked({
+      TypeScript: false,
+      React: false,
+      APIs: false,
+      Node: false,
+    });
+  };
+
+  const handleTagsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTagsChecked({ ...tagsChecked, [e.target.value]: e.target.checked });
+    handleChangeFormValue(e);
   };
   //--------------------------------------------------------------------------------------HTML returned
   return (
@@ -184,36 +202,36 @@ export default function AddResourcePage(): JSX.Element {
           <input
             value="TypeScript"
             type="checkbox"
+            checked={tagsChecked.TypeScript}
             name="resource_tags"
-            onChange={(e) => handleChangeFormValue(e)}
-            required
+            onChange={(e) => handleTagsChange(e)}
             className="resourceTag-TS"
           ></input>
           <label>React</label>
           <input
             value="React"
             type="checkbox"
+            checked={tagsChecked.React}
             name="resource_tags"
-            onChange={(e) => handleChangeFormValue(e)}
+            onChange={(e) => handleTagsChange(e)}
             className="resourceTag-React"
-            required
           ></input>
           <label>APIs</label>
           <input
             value="APIs"
             type="checkbox"
+            checked={tagsChecked.APIs}
             name="resource_tags"
-            onChange={(e) => handleChangeFormValue(e)}
+            onChange={(e) => handleTagsChange(e)}
             className="resourceTag-APIs"
-            required
           ></input>
           <label>Node</label>
           <input
             value="Node"
             type="checkbox"
+            checked={tagsChecked.Node}
             name="resource_tags"
-            onChange={(e) => handleChangeFormValue(e)}
-            required
+            onChange={(e) => handleTagsChange(e)}
             className="resourceTag-Node"
           ></input>
         </div>
