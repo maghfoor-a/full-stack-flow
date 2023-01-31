@@ -142,16 +142,14 @@ export default function FullResourcePage(): JSX.Element {
                   </p>
 
                   <div className="comment-buttons">
-               
-                      
-
-                  {user && comment.user_id === JSON.parse(user).user_id && (
-                    <button className="delete-button"
-
-                      onClick={() => handleDeleteComment(comment.comment_id)}
-                    >
-                      delete
-                    </button> )}
+                    {user && comment.user_id === JSON.parse(user).user_id && (
+                      <button
+                        className="delete-button"
+                        onClick={() => handleDeleteComment(comment.comment_id)}
+                      >
+                        delete
+                      </button>
+                    )}
 
                     <button
                       className="like-button"
@@ -160,8 +158,6 @@ export default function FullResourcePage(): JSX.Element {
                       like
                     </button>
                   </div>
-                  
-
                 </div>
               );
             })}

@@ -137,14 +137,14 @@ export default function AddResourcePage(): JSX.Element {
   //--------------------------------------------------------------------------------------HTML returned
   return (
     <>
-
       <div className="title">
         <h1>This is AddResourcePage.</h1>
       </div>
 
-
-      <form className="input-form" onSubmit={(e) => (user ? handleSubmitButton(e) : signIn(e))}>
-
+      <form
+        className="input-form"
+        onSubmit={(e) => (user ? handleSubmitButton(e) : signIn(e))}
+      >
         <label>
           Resource Name:
           <input
