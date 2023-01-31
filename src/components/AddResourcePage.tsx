@@ -24,7 +24,27 @@ export default function AddResourcePage(): JSX.Element {
     resource_dislikes: 0,
     resource_link: "",
   });
+
   const user = localStorage.getItem("user");
+
+
+  const [tagsChecked, setTagsChecked] = useState({
+    TypeScript: false,
+    React: false,
+    APIs: false,
+    Node: false,
+    JavaScript: false,
+    CSS: false,
+    Week1: false,
+    Week2: false,
+    Week3: false,
+    Week4: false,
+    Week5: false,
+    Week6: false,
+    Week7: false,
+    Week8: false,
+  });
+
   //--------------------------------------------------------------------------------------TAGS handler function
   const handleResourceTags = (selectedValue: string) => {
     const tagsArray = resourceForm.resource_tags.split(", ");
@@ -92,6 +112,27 @@ export default function AddResourcePage(): JSX.Element {
       resource_dislikes: 0,
       resource_link: "",
     });
+    setTagsChecked({
+      TypeScript: false,
+      React: false,
+      APIs: false,
+      Node: false,
+      JavaScript: false,
+      CSS: false,
+      Week1: false,
+      Week2: false,
+      Week3: false,
+      Week4: false,
+      Week5: false,
+      Week6: false,
+      Week7: false,
+      Week8: false,
+    });
+  };
+
+  const handleTagsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTagsChecked({ ...tagsChecked, [e.target.value]: e.target.checked });
+    handleChangeFormValue(e);
   };
   //--------------------------------------------------------------------------------------HTML returned
   return (
@@ -188,37 +229,127 @@ export default function AddResourcePage(): JSX.Element {
           <input
             value="TypeScript"
             type="checkbox"
+            checked={tagsChecked.TypeScript}
             name="resource_tags"
-            onChange={(e) => handleChangeFormValue(e)}
-            required
+            onChange={(e) => handleTagsChange(e)}
             className="resourceTag-TS"
           ></input>
           <label>React</label>
           <input
             value="React"
             type="checkbox"
+            checked={tagsChecked.React}
             name="resource_tags"
-            onChange={(e) => handleChangeFormValue(e)}
+            onChange={(e) => handleTagsChange(e)}
             className="resourceTag-React"
-            required
           ></input>
           <label>APIs</label>
           <input
             value="APIs"
             type="checkbox"
+            checked={tagsChecked.APIs}
             name="resource_tags"
-            onChange={(e) => handleChangeFormValue(e)}
+            onChange={(e) => handleTagsChange(e)}
             className="resourceTag-APIs"
-            required
           ></input>
           <label>Node</label>
           <input
             value="Node"
             type="checkbox"
+            checked={tagsChecked.Node}
             name="resource_tags"
-            onChange={(e) => handleChangeFormValue(e)}
-            required
+            onChange={(e) => handleTagsChange(e)}
             className="resourceTag-Node"
+          ></input>
+          <label>JavaScript</label>
+          <input
+            value="JavaScript"
+            type="checkbox"
+            checked={tagsChecked.JavaScript}
+            name="resource_tags"
+            onChange={(e) => handleTagsChange(e)}
+            className="resourceTag-JS"
+          ></input>
+          <label>CSS</label>
+          <input
+            value="CSS"
+            type="checkbox"
+            checked={tagsChecked.CSS}
+            name="resource_tags"
+            onChange={(e) => handleTagsChange(e)}
+            className="resourceTag-CSS"
+          ></input>
+          <label>Week1</label>
+          <input
+            value="Week1"
+            type="checkbox"
+            checked={tagsChecked.Week1}
+            name="resource_tags"
+            onChange={(e) => handleTagsChange(e)}
+            className="resourceTag-Week1"
+          ></input>
+          <label>Week2</label>
+          <input
+            value="Week2"
+            type="checkbox"
+            checked={tagsChecked.Week2}
+            name="resource_tags"
+            onChange={(e) => handleTagsChange(e)}
+            className="resourceTag-Week2"
+          ></input>
+          <label>Week3</label>
+          <input
+            value="Week3"
+            type="checkbox"
+            checked={tagsChecked.Week3}
+            name="resource_tags"
+            onChange={(e) => handleTagsChange(e)}
+            className="resourceTag-Week3"
+          ></input>
+          <label>Week4</label>
+          <input
+            value="Week4"
+            type="checkbox"
+            checked={tagsChecked.Week4}
+            name="resource_tags"
+            onChange={(e) => handleTagsChange(e)}
+            className="resourceTag-Week4"
+          ></input>
+          <label>Week5</label>
+          <input
+            value="Week5"
+            type="checkbox"
+            checked={tagsChecked.Week5}
+            name="resource_tags"
+            onChange={(e) => handleTagsChange(e)}
+            className="resourceTag-Week5"
+          ></input>
+          <label>Week6</label>
+          <input
+            value="Week6"
+            type="checkbox"
+            checked={tagsChecked.Week6}
+            name="resource_tags"
+            onChange={(e) => handleTagsChange(e)}
+            className="resourceTag-Week6"
+          ></input>
+          <label>Week7</label>
+          <input
+            value="Week7"
+            type="checkbox"
+            checked={tagsChecked.Week7}
+            name="resource_tags"
+            onChange={(e) => handleTagsChange(e)}
+            className="resourceTag-Week7"
+          ></input>
+          <label>Week8</label>
+          <input
+            value="Week8"
+            type="checkbox"
+            checked={tagsChecked.Week8}
+            name="resource_tags"
+            onChange={(e) => handleTagsChange(e)}
+            className="resourceTag-Week8"
           ></input>
         </div>
         <button type="submit">Submit</button>

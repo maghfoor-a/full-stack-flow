@@ -81,6 +81,96 @@ export function ResourcesList(): JSX.Element {
           required
           className="resourceTag-Node"
         ></input>
+        <label>JavaScript</label>
+        <input
+          value="JavaScript"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          required
+          className="resourceTag-JavaScript"
+        ></input>
+        <label>CSS</label>
+        <input
+          value="CSS"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          required
+          className="resourceTag-CSS"
+        ></input>
+        <label>Week1</label>
+        <input
+          value="Week1"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          required
+          className="resourceTag-Week1"
+        ></input>
+        <label>Week2</label>
+        <input
+          value="Week2"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          required
+          className="resourceTag-Week2"
+        ></input>
+        <label>Week3</label>
+        <input
+          value="Week3"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          required
+          className="resourceTag-Week3"
+        ></input>
+        <label>Week4</label>
+        <input
+          value="Week4"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          required
+          className="resourceTag-Week4"
+        ></input>
+        <label>Week5</label>
+        <input
+          value="Week5"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          required
+          className="resourceTag-Week5"
+        ></input>
+        <label>Week6</label>
+        <input
+          value="Week6"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          required
+          className="resourceTag-Week6"
+        ></input>
+        <label>Week7</label>
+        <input
+          value="Week7"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          required
+          className="resourceTag-Week7"
+        ></input>
+        <label>Week8</label>
+        <input
+          value="Week8"
+          type="checkbox"
+          name="resource_tags"
+          onChange={(e) => setFilterTags(handleTagsFilter(e.target.value))}
+          required
+          className="resourceTag-Week8"
+        ></input>
       </div>
       <div className="searchBar">
         <input
