@@ -67,3 +67,21 @@ describe("Guests cannot add resource", () => {
     /* ==== End Cypress Studio ==== */
   });
 });
+
+describe("guest cannot submit comments", () => {
+  it("Guest are prompted to sign in to submit a comment", () => {
+    /* ==== Generated with Cypress Studio ==== */
+    cy.visit("localhost:3000/");
+    cy.get(
+      ":nth-child(5) > .resourceSummary > .resource-info > .resourceButton"
+    ).click();
+    cy.get('[placeholder="comment here"]').type("Hello");
+    cy.get(".comment-section > div > h1").click();
+    cy.get("#root > :nth-child(2)").click();
+    cy.get('[type="submit"]').click();
+    cy.get(
+      ":nth-child(2) > .Toastify > .Toastify__toast-container > #\\31  > .Toastify__toast-body > div"
+    ).should("have.text", "Sign in to submit comment");
+    /* ==== End Cypress Studio ==== */
+  });
+});
