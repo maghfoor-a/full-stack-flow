@@ -44,7 +44,8 @@ export function ResourcesList(): JSX.Element {
   };
   return (
     <>
-      <div>
+      <div className="tags">
+        <div className="type-tags">
         <label>TypeScript</label>
         <input
           value="TypeScript"
@@ -99,6 +100,8 @@ export function ResourcesList(): JSX.Element {
           required
           className="resourceTag-CSS"
         ></input>
+        </div>
+        <div className="week-tags">
         <label>Week1</label>
         <input
           value="Week1"
@@ -171,12 +174,15 @@ export function ResourcesList(): JSX.Element {
           required
           className="resourceTag-Week8"
         ></input>
+       
       </div>
       <div className="searchBar">
-        <input
+        <input className="search-input"
           value={searchValue}
+          placeholder="search for a resource..."
           onChange={(e) => setSearchValue(e.target.value)}
         ></input>
+      </div>
       </div>
       {resources.length ? (
         <div className="resource-container">
