@@ -23,6 +23,7 @@ export interface FullResourcesPageProps {
 }
 
 export interface IComments {
+  user_name: string;
   comment_id: number;
   user_id: number;
   resource_id: number;
