@@ -140,18 +140,28 @@ export default function FullResourcePage(): JSX.Element {
                     {comment.user_name}: {comment.comment_text} - Likes:
                     {comment.comment_likes}
                   </p>
+
+                  <div className="comment-buttons">
+               
+                      
+
                   {user && comment.user_id === JSON.parse(user).user_id && (
-                    <button
+                    <button className="delete-button"
+
                       onClick={() => handleDeleteComment(comment.comment_id)}
                     >
                       delete
+                    </button> )}
+
+                    <button
+                      className="like-button"
+                      onClick={() => handleLikedComment(comment.comment_id)}
+                    >
+                      like
                     </button>
-                  )}
-                  <button
-                    onClick={() => handleLikedComment(comment.comment_id)}
-                  >
-                    like
-                  </button>
+                  </div>
+                  
+
                 </div>
               );
             })}

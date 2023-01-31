@@ -3,20 +3,23 @@ body {
 }
 
 .resources-information {
-  background-color: rgb(113, 152, 186);
+  background-color: #fdf5df;
+  color: #f92c85;
   padding: 20px;
   border-radius: 15px;
 }
 
 .comment-section {
-  background-color: rgb(72, 121, 163);
+  background-color: #5ebec4;
+  color: #fdf5df;
   padding: 20px;
   border-radius: 15px;
   margin-top: 20px;
 }
 
 .comments-title {
-  background-color: rgb(80, 92, 102);
+  background-color: #fdf5df;
+  color: #5ebec4;
   padding: 5px;
   border-radius: 15px;
   margin-top: 20px;
@@ -27,8 +30,20 @@ body {
 }
 
 .comment-item {
-  background-color: rgb(83, 137, 184);
+  background-color: #5ebec4;
+  color: #fdf5df;
   padding: 5px;
   border-radius: 15px;
   margin-bottom: 10px;
+}
+.comment-buttons {
+  color: #5ebec4;
+}
+.delete-button {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+.like-button {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
