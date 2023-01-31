@@ -27,7 +27,6 @@ export default function AddResourcePage(): JSX.Element {
 
   const user = localStorage.getItem("user");
 
-
   const [tagsChecked, setTagsChecked] = useState({
     TypeScript: false,
     React: false,
