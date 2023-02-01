@@ -1,0 +1,29 @@
+body {
+  font-family: monospace;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1fr;
+
+  background-color: #5ebec4;
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.navitem {
+  text-decoration: none;
+  color: black;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: #f92c85;
+  color: #fdf5df;
+
+  width: 120px;
+}
+
+.log-out {
+  width: 7rem;
+  margin-left: 1rem;
+}
